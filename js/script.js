@@ -2,11 +2,13 @@
 A Random Quote Generator
 ******************************************/
 
+// Declaring the variables
 const quoteBox = document.getElementById('quote-box');
 const body = document.getElementsByTagName('body')[0];
 const quoteBtn = document.getElementById('loadQuote');
 let timer = window.setInterval(printQuote, 5000);
 
+// Array of quote objects
 let quotes = [
   {
     quote: "Frankly, my dear, I don't give a damn.",
@@ -59,15 +61,17 @@ let quotes = [
   }
 ];
 
+// Select random quote from the quotes array
 function getRandomQuote(array) {
   return array[Math.floor(Math.random() * Math.floor(array.length))];
 }
 
-/*https://css-tricks.com/examples/RandomHexColor/*/
+// Generate random hex color: code from https://css-tricks.com/examples/RandomHexColor/
 function getRandomHexColor() {
   return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
+// Print quote to the document
 function printQuote() {
   let selectedQuote = getRandomQuote(quotes);
   let randomColor = getRandomHexColor();
@@ -75,25 +79,31 @@ function printQuote() {
 
   message += '<p class="quote">' + selectedQuote.quote + '</p>';
   message += '<p class="source">' + selectedQuote.source;
+
   if (selectedQuote.citation) {
     message += '<span class="citation">' + selectedQuote.citation + '</span>';
   }
+
   if (selectedQuote.year) {
     message += '<span class="year">' + selectedQuote.year + '</span>';
   }
+
   if (selectedQuote.tags) {
     message += '<br /><span class="tags">' + selectedQuote.tags.join(', ') + '</span>';
   }
+
   message += '</p>';
   quoteBox.innerHTML = message;
   body.style.backgroundColor = randomColor;
 }
 
+// Reset timer that auto-changes the background color
 function resetTimer() {
   clearInterval(timer);
   timer = window.setInterval(printQuote, 5000);
 }
 
+// Change quote event for new quote button
 quoteBtn.addEventListener('click', function() {
   printQuote();
   resetTimer();
