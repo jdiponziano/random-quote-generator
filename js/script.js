@@ -52,7 +52,13 @@ function getRandomQuote(array) {
   return array[Math.floor(Math.random() * Math.floor(array.length))];
 }
 
+/*https://css-tricks.com/examples/RandomHexColor/*/
+function getRandomHexColor() {
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+}
+
 function printQuote() {
+  let randomColor = getRandomHexColor();
   let selectedQuote = getRandomQuote(quotes);
   let message = "";
 
@@ -66,6 +72,7 @@ function printQuote() {
   }
   message += "</p>";
   document.getElementById("quote-box").innerHTML = message;
+  document.getElementsByTagName("body")[0].style.backgroundColor = randomColor;
 }
 
 document.getElementById("loadQuote").addEventListener("click", printQuote, false);
