@@ -52,4 +52,20 @@ function getRandomQuote(array) {
   return array[Math.floor(Math.random() * Math.floor(array.length))];
 }
 
+function printQuote() {
+  let selectedQuote = getRandomQuote(quotes);
+  let message = "";
+
+  message += '<p class="quote">' + selectedQuote.quote + "</p>";
+  message += '<p class="source">' + selectedQuote.source;
+  if (selectedQuote.citation !== "") {
+    message += '<span class="citation">' + selectedQuote.citation + "</span>";
+  }
+  if (selectedQuote.year !== "") {
+    message += '<span class="year">' + selectedQuote.year + "</span>";
+  }
+  message += "</p>";
+  document.getElementById("quote-box").innerHTML = message;
+}
+
 document.getElementById("loadQuote").addEventListener("click", printQuote, false);
