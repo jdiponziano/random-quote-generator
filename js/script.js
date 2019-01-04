@@ -2,6 +2,9 @@
 A Random Quote Generator
 ******************************************/
 
+const quoteBox = document.getElementById("quote-box");
+const body = document.getElementsByTagName("body")[0];
+const quoteBtn = document.getElementById("loadQuote");
 let timer = window.setInterval(printQuote, 5000);
 
 let quotes = [
@@ -73,8 +76,8 @@ function printQuote() {
     message += '<span class="year">' + selectedQuote.year + "</span>";
   }
   message += "</p>";
-  document.getElementById("quote-box").innerHTML = message;
-  document.getElementsByTagName("body")[0].style.backgroundColor = randomColor;
+  quoteBox.innerHTML = message;
+  body.style.backgroundColor = randomColor;
 }
 
 function resetTimer() {
@@ -82,7 +85,7 @@ function resetTimer() {
   timer = window.setInterval(printQuote, 5000);
 }
 
-document.getElementById("loadQuote").addEventListener("click", function() {
+quoteBtn.addEventListener("click", function() {
   printQuote();
   resetTimer();
 });
