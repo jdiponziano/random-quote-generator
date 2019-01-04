@@ -2,6 +2,8 @@
 A Random Quote Generator
 ******************************************/
 
+let timer = window.setInterval(printQuote, 5000);
+
 let quotes = [
   {
     quote: "Frankly, my dear, I don't give a damn.",
@@ -75,4 +77,12 @@ function printQuote() {
   document.getElementsByTagName("body")[0].style.backgroundColor = randomColor;
 }
 
-document.getElementById("loadQuote").addEventListener("click", printQuote, false);
+function resetTimer() {
+  clearInterval(timer);
+  timer = window.setInterval(printQuote, 5000);
+}
+
+document.getElementById("loadQuote").addEventListener("click", function() {
+  printQuote();
+  resetTimer();
+});
