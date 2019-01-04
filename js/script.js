@@ -48,4 +48,8 @@ let quotes = [
   }
 ];
 
+function getRandomQuote(array) {
+  return array[Math.floor(Math.random() * Math.floor(array.length))];
+}
+
 document.getElementById("loadQuote").addEventListener("click", printQuote, false);
