@@ -1,55 +1,51 @@
 /******************************************
-Treehouse Techdegree:
-FSJS project 1 - A Random Quote Generator
+A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
+let quotes = [
+  {
+    quote: "Frankly, my dear, I don't give a damn.",
+    source: "Rhett Butler",
+    citation: "Gone With the Wind",
+    year: 1939
+  },
+  {
+    quote: "I'm going to make him an offer he can't refuse.",
+    source: "Don Corleone",
+    citation: "The Godfather",
+    year: 1972
+  },
+  {
+    quote:
+      "You don't understand! I coulda had class. I coulda been a contender. I could've been somebody, instead of a bum, which is what I am.",
+    source: "Terry Malloy",
+    citation: "On the Waterfront",
+    year: 1954
+  },
+  {
+    quote: "They may take our lives, but they'll never take our freedom!",
+    source: "William Wallace",
+    citation: "Braveheart",
+    year: 1995
+  },
+  {
+    quote: "Badges? We ain't got no badges! We don't need no badges! I don't have to show you any stinking badges!",
+    source: 'Bandit Leader named "Gold Hat"',
+    citation: "The Treasure of the Sierra Madre",
+    year: 1948
+  },
+  {
+    quote: "If my life wasn't funny it would just be true, and that is unacceptable.",
+    source: "Carrie Fisher"
+  },
+  {
+    quote: "Nothing is over until we decide it is! Was it over when the Germans bombed Pearl Harbor ? Hell, no!",
+    source: "John Belushi"
+  },
+  {
+    quote: "Cricket is basically baseball on valium.",
+    source: "Robin Williams"
+  }
+];
 
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
-
-
-
-
-/***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
-***/
-
-
-
-
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
-
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+document.getElementById("loadQuote").addEventListener("click", printQuote, false);
