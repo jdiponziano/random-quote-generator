@@ -2,54 +2,60 @@
 A Random Quote Generator
 ******************************************/
 
-const quoteBox = document.getElementById("quote-box");
-const body = document.getElementsByTagName("body")[0];
-const quoteBtn = document.getElementById("loadQuote");
+const quoteBox = document.getElementById('quote-box');
+const body = document.getElementsByTagName('body')[0];
+const quoteBtn = document.getElementById('loadQuote');
 let timer = window.setInterval(printQuote, 5000);
 
 let quotes = [
   {
     quote: "Frankly, my dear, I don't give a damn.",
-    source: "Rhett Butler",
-    citation: "Gone With the Wind",
-    year: 1939
+    source: 'Rhett Butler',
+    citation: 'Gone With the Wind',
+    year: 1939,
+    tags: ['Movie', 'Romance', 'Classic']
   },
   {
     quote: "I'm going to make him an offer he can't refuse.",
-    source: "Don Corleone",
-    citation: "The Godfather",
-    year: 1972
+    source: 'Don Corleone',
+    citation: 'The Godfather',
+    year: 1972,
+    tags: ['Family Drama', 'Gangster Film']
   },
   {
     quote:
       "You don't understand! I coulda had class. I coulda been a contender. I could've been somebody, instead of a bum, which is what I am.",
-    source: "Terry Malloy",
-    citation: "On the Waterfront",
-    year: 1954
+    source: 'Terry Malloy',
+    citation: 'On the Waterfront',
+    year: 1954,
+    tags: ['Crime', 'Drama']
   },
   {
     quote: "They may take our lives, but they'll never take our freedom!",
-    source: "William Wallace",
-    citation: "Braveheart",
-    year: 1995
+    source: 'William Wallace',
+    citation: 'Braveheart',
+    year: 1995,
+    tags: ['Action', 'Drama']
   },
   {
     quote: "Badges? We ain't got no badges! We don't need no badges! I don't have to show you any stinking badges!",
     source: 'Bandit Leader named "Gold Hat"',
-    citation: "The Treasure of the Sierra Madre",
-    year: 1948
+    citation: 'The Treasure of the Sierra Madre',
+    year: 1948,
+    tags: ['Action', 'Drama']
   },
   {
     quote: "If my life wasn't funny it would just be true, and that is unacceptable.",
-    source: "Carrie Fisher"
+    source: 'Carrie Fisher'
   },
   {
-    quote: "Nothing is over until we decide it is! Was it over when the Germans bombed Pearl Harbor ? Hell, no!",
-    source: "John Belushi"
+    quote: 'Nothing is over until we decide it is! Was it over when the Germans bombed Pearl Harbor ? Hell, no!',
+    source: 'John Belushi'
   },
   {
-    quote: "Cricket is basically baseball on valium.",
-    source: "Robin Williams"
+    quote: 'Cricket is basically baseball on valium.',
+    source: 'Robin Williams',
+    tags: ['Humor']
   }
 ];
 
@@ -59,23 +65,26 @@ function getRandomQuote(array) {
 
 /*https://css-tricks.com/examples/RandomHexColor/*/
 function getRandomHexColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 function printQuote() {
-  let randomColor = getRandomHexColor();
   let selectedQuote = getRandomQuote(quotes);
-  let message = "";
+  let randomColor = getRandomHexColor();
+  let message = '';
 
-  message += '<p class="quote">' + selectedQuote.quote + "</p>";
+  message += '<p class="quote">' + selectedQuote.quote + '</p>';
   message += '<p class="source">' + selectedQuote.source;
-  if (selectedQuote.citation !== "") {
-    message += '<span class="citation">' + selectedQuote.citation + "</span>";
+  if (selectedQuote.citation) {
+    message += '<span class="citation">' + selectedQuote.citation + '</span>';
   }
-  if (selectedQuote.year !== "") {
-    message += '<span class="year">' + selectedQuote.year + "</span>";
+  if (selectedQuote.year) {
+    message += '<span class="year">' + selectedQuote.year + '</span>';
   }
-  message += "</p>";
+  if (selectedQuote.tags) {
+    message += '<br /><span class="tags">' + selectedQuote.tags.join(', ') + '</span>';
+  }
+  message += '</p>';
   quoteBox.innerHTML = message;
   body.style.backgroundColor = randomColor;
 }
@@ -85,7 +94,7 @@ function resetTimer() {
   timer = window.setInterval(printQuote, 5000);
 }
 
-quoteBtn.addEventListener("click", function() {
+quoteBtn.addEventListener('click', function() {
   printQuote();
   resetTimer();
 });
