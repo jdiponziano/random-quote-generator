@@ -95,6 +95,7 @@ function printQuote() {
   message += '</p>';
   quoteBox.innerHTML = message;
   body.style.backgroundColor = randomColor;
+  quoteBtn.style.backgroundColor = randomColor;
 }
 
 // Reset timer that auto-changes the background color
